@@ -72,8 +72,8 @@ func TestDeleteAccount(t *testing.T)  {
 
 	account2, err1:= testQueries.GetAccount(context.Background(), account1.ID)
 
-	require.NoError(t, err1)
-	require.EqualError(t, err, sql.ErrNoRows.Error())
+	require.Error(t, err1)
+	require.EqualError(t, err1, sql.ErrNoRows.Error())
 	require.Empty(t, account2)
 }
 
